@@ -19,12 +19,12 @@ public class CreateCarServlet extends HttpServlet {
 
         String carName = servletRequest.getParameter("car");
 
-        Car car = new Car();
-        car.setName(carName);
+        Car car = new Car(carName);
+
 
         new CarDao().createCar(car);
 
-        servletRequest.getRequestDispatcher("index.jsp").forward(servletRequest, servletResponse);
+        servletResponse.sendRedirect("/find-all-cars");
 
     }
 }
